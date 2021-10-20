@@ -58,6 +58,10 @@ public class Elector {
                 break;
             }
         }
-        JOptionPane.showMessageDialog(null, listaNegativos + "\nNo han hecho los deberes");
+        StringBuilder datosArray = new StringBuilder();
+        for (String elemento: listaNegativos) {
+            datosArray.append(elemento).append(", ");
+        }
+        JOptionPane.showMessageDialog(null, datosArray + " no han hecho los deberes");
     }
 }
