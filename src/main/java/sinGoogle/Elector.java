@@ -81,14 +81,16 @@ public class Elector {
         else {
             StringBuilder datosArray1 = new StringBuilder();
             for (String elemento : listaPositivos) {
-                datosArray1.append(elemento).append(", ");
+                datosArray1.append(elemento).append("\n");
             }
             StringBuilder datosArray2 = new StringBuilder();
             for (String elemento : listaNegativos) {
-                datosArray2.append(elemento).append(", ");
+                datosArray2.append(elemento).append("\n");
             }
-
-            JOptionPane.showMessageDialog(null, datosArray1 + " han hecho los deberes y " + datosArray2 + "no han hecho los deberes");
+            UIManager.put("OptionPane.okButtonText", "Siguiente");
+            JOptionPane.showMessageDialog(null, datosArray1 + "\nHan hecho los deberes.");
+            UIManager.put("OptionPane.okButtonText", "Fin");
+            JOptionPane.showMessageDialog(null, datosArray2 + "\nNo han hecho los deberes.");
         }
     }
 }
