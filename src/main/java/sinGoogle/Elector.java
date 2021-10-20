@@ -13,6 +13,7 @@ public class Elector {
         int respuesta = 1;
         int numero;
 
+        //Lista de alumnos
         listaAlumnos.add("Edgardo Gabriel Allende");
         listaAlumnos.add("Juan Antonio Barbero Mena");
         listaAlumnos.add("Juan José Bazán Espinosa");
@@ -42,6 +43,7 @@ public class Elector {
         listaAlumnos.add("Rubén Vélez Simón");
         listaAlumnos.add("Alejandro Santaella Urbano");
 
+        //Bucle
         while (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.YES_OPTION) {
 
             numero = (int) (Math.random() * listaAlumnos.size());
@@ -50,14 +52,15 @@ public class Elector {
             respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
                     + "\n¿Has hecho los deberes, " + resultado + "?");
 
-            if (respuesta == JOptionPane.NO_OPTION){
-                listaNegativos.add(resultado);
-            }
-            else if (respuesta == JOptionPane.YES_OPTION){
-                listaPositivos.add(resultado);
-            }
+            //Condiciones del bucle
+            if (respuesta == JOptionPane.NO_OPTION) listaNegativos.add(resultado);
+            else if (respuesta == JOptionPane.YES_OPTION) listaPositivos.add(resultado);
+
             listaAlumnos.remove(numero);
+            if (listaAlumnos.isEmpty()) break;
         }
+
+        //Condiciones resultado del bucle
         if (listaNegativos.isEmpty() && listaPositivos.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Fin de programa");
         }
@@ -67,13 +70,15 @@ public class Elector {
                 datosArray.append(elemento).append("\n");
             }
             JOptionPane.showMessageDialog(null, datosArray + "\nHan hecho los deberes");
-        } else if (listaPositivos.isEmpty()) {
+        }
+        else if (listaPositivos.isEmpty()) {
             StringBuilder datosArray = new StringBuilder();
             for (String elemento : listaNegativos) {
                 datosArray.append(elemento).append("\n");
             }
             JOptionPane.showMessageDialog(null, datosArray + "\nNo han hecho los deberes");
-        } else {
+        }
+        else {
             StringBuilder datosArray1 = new StringBuilder();
             for (String elemento : listaPositivos) {
                 datosArray1.append(elemento).append(", ");
