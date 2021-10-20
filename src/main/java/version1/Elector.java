@@ -47,6 +47,5 @@ public class Elector {
                     + "\n¿Has hecho los deberes, " + resultado + "?");
             
         }
-        //A
     }
 }
