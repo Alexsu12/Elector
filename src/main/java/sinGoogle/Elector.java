@@ -1,4 +1,4 @@
-package version1;
+package sinGoogle;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -50,7 +50,15 @@ public class Elector {
             respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
                     + "\n¿Has hecho los deberes, " + resultado + "?");
 
-            lista.remove(numero);
+            System.out.println(lista.size());
+            if (lista.size() > 1){
+                lista.remove(numero);
+                System.out.println(lista.size());
+            }
+            else {
+                JOptionPane.showMessageDialog(null, "Fin de programa");
+                break;
+            }
         }
     }
 }
