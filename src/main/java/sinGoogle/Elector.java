@@ -6,9 +6,12 @@ import java.util.ArrayList;
 public class Elector {
     public static void main(String[] args) {
 
+        //Arraylists
         ArrayList<String> listaAlumnos = new ArrayList<>();
         ArrayList<String> listaNegativos = new ArrayList<>();
         ArrayList<String> listaPositivos = new ArrayList<>();
+
+        //Variables
         String resultado;
         int respuesta = 1;
         int numero;
