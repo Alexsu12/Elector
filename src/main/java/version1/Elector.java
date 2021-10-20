@@ -9,6 +9,7 @@ public class Elector {
         ArrayList<String> lista = new ArrayList<>();
         String resultado;
         int respuesta = 1;
+        int numero;
 
         lista.add("Edgardo Gabriel Allende");
         lista.add("Juan Antonio Barbero Mena");
@@ -39,13 +40,17 @@ public class Elector {
         lista.add("Rubén Vélez Simón");
         lista.add("Alejandro Santaella Urbano");
 
+
+
         while (respuesta == JOptionPane.NO_OPTION) {
 
-            resultado = lista.get((int) (Math.random() * 29));
+            numero = (int) (Math.random() * lista.size());
+            resultado = lista.get(numero);
 
             respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
                     + "\n¿Has hecho los deberes, " + resultado + "?");
-            
+
+            lista.remove(numero);
         }
     }
 }
