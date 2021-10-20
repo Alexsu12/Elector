@@ -6,59 +6,58 @@ import java.util.ArrayList;
 public class Elector {
     public static void main(String[] args) {
 
-        ArrayList<String> lista = new ArrayList<>();
+        ArrayList<String> listaAlumnos = new ArrayList<>();
+        ArrayList<String> listaNegativos = new ArrayList<>();
         String resultado;
         int respuesta = 1;
         int numero;
 
-        lista.add("Edgardo Gabriel Allende");
-        lista.add("Juan Antonio Barbero Mena");
-        lista.add("Juan José Bazán Espinosa");
-        lista.add("Imad El Fahssi");
-        lista.add("David Fernández Fernández");
-        lista.add("Domingo Flores Ortega");
-        lista.add("Gabriel García Tallai");
-        lista.add("Alberto Garzón Rodríguez");
-        lista.add("Maximiliano Hoffmann Foyo");
-        lista.add("Ismael Jerruz Jellouly");
-        lista.add("Cristina del Carmen Jiménez Fernández");
-        lista.add("Samuel Alejandro Jiménez Mazas");
-        lista.add("Alex López Guerrero");
-        lista.add("Juan Diego Marín Morales");
-        lista.add("Miguel Martín Fernández");
-        lista.add("Álvaro Martínez Flores");
-        lista.add("Francisco José Mateos Gil");
-        lista.add("Jesús Narbona Aguilar");
-        lista.add("Lorena Olay Unciano");
-        lista.add("Eduardo Orellana Pomares");
-        lista.add("Javier Parodi Piñero");
-        lista.add("Sergio David Romero Berlanga");
-        lista.add("José Ignacio Salcedo Guarde");
-        lista.add("Hind Samiri");
-        lista.add("Victoria Sampalo García");
-        lista.add("Adrián Vallejo Robles");
-        lista.add("Rubén Vélez Simón");
-        lista.add("Alejandro Santaella Urbano");
-
-
+        listaAlumnos.add("Edgardo Gabriel Allende");
+        listaAlumnos.add("Juan Antonio Barbero Mena");
+        listaAlumnos.add("Juan José Bazán Espinosa");
+        listaAlumnos.add("Imad El Fahssi");
+        listaAlumnos.add("David Fernández Fernández");
+        listaAlumnos.add("Domingo Flores Ortega");
+        listaAlumnos.add("Gabriel García Tallai");
+        listaAlumnos.add("Alberto Garzón Rodríguez");
+        listaAlumnos.add("Maximiliano Hoffmann Foyo");
+        listaAlumnos.add("Ismael Jerruz Jellouly");
+        listaAlumnos.add("Cristina del Carmen Jiménez Fernández");
+        listaAlumnos.add("Samuel Alejandro Jiménez Mazas");
+        listaAlumnos.add("Alex López Guerrero");
+        listaAlumnos.add("Juan Diego Marín Morales");
+        listaAlumnos.add("Miguel Martín Fernández");
+        listaAlumnos.add("Álvaro Martínez Flores");
+        listaAlumnos.add("Francisco José Mateos Gil");
+        listaAlumnos.add("Jesús Narbona Aguilar");
+        listaAlumnos.add("Lorena Olay Unciano");
+        listaAlumnos.add("Eduardo Orellana Pomares");
+        listaAlumnos.add("Javier Parodi Piñero");
+        listaAlumnos.add("Sergio David Romero Berlanga");
+        listaAlumnos.add("José Ignacio Salcedo Guarde");
+        listaAlumnos.add("Hind Samiri");
+        listaAlumnos.add("Victoria Sampalo García");
+        listaAlumnos.add("Adrián Vallejo Robles");
+        listaAlumnos.add("Rubén Vélez Simón");
+        listaAlumnos.add("Alejandro Santaella Urbano");
 
         while (respuesta == JOptionPane.NO_OPTION) {
 
-            numero = (int) (Math.random() * lista.size());
-            resultado = lista.get(numero);
+            numero = (int) (Math.random() * listaAlumnos.size());
+            resultado = listaAlumnos.get(numero);
 
             respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
                     + "\n¿Has hecho los deberes, " + resultado + "?");
 
-            System.out.println(lista.size());
-            if (lista.size() > 1){
-                lista.remove(numero);
-                System.out.println(lista.size());
+            if (listaAlumnos.size() > 1){
+                listaNegativos.add(resultado);
+                listaAlumnos.remove(numero);
             }
             else {
                 JOptionPane.showMessageDialog(null, "Fin de programa");
                 break;
             }
         }
+        JOptionPane.showMessageDialog(null, listaNegativos + "\nNo han hecho los deberes");
     }
 }
