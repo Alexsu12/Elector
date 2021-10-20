@@ -12,7 +12,6 @@ public class Elector {
         ArrayList<String> listaPositivos = new ArrayList<>();
         String resultado;
         int respuesta = 1;
-        int bucle = 1;
         int numero;
 
         listaAlumnos.add("Edgardo Gabriel Allende");
@@ -60,31 +59,32 @@ public class Elector {
             }
             listaAlumnos.remove(numero);
         }
-        if (listaNegativos.isEmpty()) {
+        if (listaNegativos.isEmpty() && listaPositivos.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Fin de programa");
+        }
+        else if (listaNegativos.isEmpty()) {
             StringBuilder datosArray = new StringBuilder();
-            for (String elemento: listaPositivos) {
+            for (String elemento : listaPositivos) {
                 datosArray.append(elemento).append("\n");
             }
             JOptionPane.showMessageDialog(null, datosArray + "\nHan hecho los deberes");
-        }
-        else if (listaPositivos.isEmpty()){
+        } else if (listaPositivos.isEmpty()) {
             StringBuilder datosArray = new StringBuilder();
-            for (String elemento: listaNegativos) {
+            for (String elemento : listaNegativos) {
                 datosArray.append(elemento).append("\n");
             }
             JOptionPane.showMessageDialog(null, datosArray + "\nNo han hecho los deberes");
-        }
-        else {
+        } else {
             StringBuilder datosArray1 = new StringBuilder();
-            for (String elemento: listaPositivos) {
+            for (String elemento : listaPositivos) {
                 datosArray1.append(elemento).append(", ");
             }
             StringBuilder datosArray2 = new StringBuilder();
-            for (String elemento: listaNegativos) {
+            for (String elemento : listaNegativos) {
                 datosArray2.append(elemento).append(", ");
             }
 
-            JOptionPane.showMessageDialog(null,datosArray1 + " han hecho los deberes y " + datosArray2 + "no han hecho lo deberes");
+            JOptionPane.showMessageDialog(null, datosArray1 + " han hecho los deberes y " + datosArray2 + "no han hecho los deberes");
         }
     }
 }
