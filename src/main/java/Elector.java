@@ -43,6 +43,8 @@ public class Elector {
 
             respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
                     + "\n¿Has hecho los deberes, " + resultado + "?");
+            
         }
+        //A
     }
 }
