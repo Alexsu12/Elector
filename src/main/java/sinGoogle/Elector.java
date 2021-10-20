@@ -2,7 +2,6 @@ package sinGoogle;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Elector {
     public static void main(String[] args) {
