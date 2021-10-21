@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ElectorMKII {
     public static void main(String[] args) throws IOException {
@@ -19,6 +20,20 @@ public class ElectorMKII {
         String resultado;
         int respuesta = 1;
         int numero;
+        String line;
+        String splitBy = "\n";
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader("/media/alejandro/ALEX/Proyectos Java/Elector/src/main/java/sinGoogle/listado.csv"));
+            while ((line = br.readLine()) != null)
+            {
+                String[] prelistado = line.split(splitBy);
+                listaAlumnos.add(Arrays.toString(prelistado));
+            }
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
 
         //Bucle
         while (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.YES_OPTION) {
