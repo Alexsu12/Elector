@@ -40,6 +40,7 @@ public class ElectorMKIII {
 
             numero = (int) (Math.random() * listaAlumnos.size());
             resultado = listaAlumnos.get(numero);
+            resultado = resultado.substring(1, resultado.length() - 1);
 
             respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
                     + "\n¿Has hecho los deberes, " + resultado + "?");
