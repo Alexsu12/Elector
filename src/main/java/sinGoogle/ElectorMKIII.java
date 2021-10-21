@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ElectorMKII {
+public class ElectorMKIII {
     public static void main(String[] args) throws IOException {
 
         //Arraylists
