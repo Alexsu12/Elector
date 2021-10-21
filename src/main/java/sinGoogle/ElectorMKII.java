@@ -1,10 +1,14 @@
 package sinGoogle;
 
 import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ElectorMKII {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         //Arraylists
         ArrayList<String> listaAlumnos = new ArrayList<>();
@@ -15,36 +19,6 @@ public class ElectorMKII {
         String resultado;
         int respuesta = 1;
         int numero;
-
-        //Lista de alumnos
-        listaAlumnos.add("Edgardo Gabriel Allende");
-        listaAlumnos.add("Juan Antonio Barbero Mena");
-        listaAlumnos.add("Juan José Bazán Espinosa");
-        listaAlumnos.add("Imad El Fahssi");
-        listaAlumnos.add("David Fernández Fernández");
-        listaAlumnos.add("Domingo Flores Ortega");
-        listaAlumnos.add("Gabriel García Tallai");
-        listaAlumnos.add("Alberto Garzón Rodríguez");
-        listaAlumnos.add("Maximiliano Hoffmann Foyo");
-        listaAlumnos.add("Ismael Jerruz Jellouly");
-        listaAlumnos.add("Cristina del Carmen Jiménez Fernández");
-        listaAlumnos.add("Samuel Alejandro Jiménez Mazas");
-        listaAlumnos.add("Alex López Guerrero");
-        listaAlumnos.add("Juan Diego Marín Morales");
-        listaAlumnos.add("Miguel Martín Fernández");
-        listaAlumnos.add("Álvaro Martínez Flores");
-        listaAlumnos.add("Francisco José Mateos Gil");
-        listaAlumnos.add("Jesús Narbona Aguilar");
-        listaAlumnos.add("Lorena Olay Unciano");
-        listaAlumnos.add("Eduardo Orellana Pomares");
-        listaAlumnos.add("Javier Parodi Piñero");
-        listaAlumnos.add("Sergio David Romero Berlanga");
-        listaAlumnos.add("José Ignacio Salcedo Guarde");
-        listaAlumnos.add("Hind Samiri");
-        listaAlumnos.add("Victoria Sampalo García");
-        listaAlumnos.add("Adrián Vallejo Robles");
-        listaAlumnos.add("Rubén Vélez Simón");
-        listaAlumnos.add("Alejandro Santaella Urbano");
 
         //Bucle
         while (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.YES_OPTION) {
