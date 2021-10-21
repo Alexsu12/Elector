@@ -22,6 +22,7 @@ public class ElectorMKIII {
         String line;
         String splitBy = "\n";
 
+        //Lector de CSV
         try {
             BufferedReader br = new BufferedReader(new FileReader("/media/alejandro/ALEX/Proyectos Java/Elector/src/main/java/sinGoogle/listado.csv"));
             while ((line = br.readLine()) != null)
