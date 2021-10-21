@@ -14,8 +14,8 @@ public class Lector
             BufferedReader br = new BufferedReader(new FileReader("/media/alejandro/ALEX/Proyectos Java/Elector/src/main/java/sinGoogle/listado.csv"));
             while ((line = br.readLine()) != null)
             {
-                String[] employee = line.split(splitBy);
-                System.out.println(Arrays.toString(employee));
+                String[] prelistado = line.split(splitBy);
+                System.out.println(Arrays.toString(prelistado));
             }
         }
         catch (IOException e) {
