@@ -3,7 +3,7 @@ package sinGoogle;
 import javax.swing.*;
 import java.util.ArrayList;
 
-public class Elector {
+public class ElectorMKII {
     public static void main(String[] args) {
 
         //Arraylists
