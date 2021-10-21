@@ -18,7 +18,7 @@ public class ElectorMKIII {
         //Variables
         String resultado;
         int respuesta = 1;
-        int numero;
+        int numero = 0;
         String line;
         String splitBy = "\n";
 
@@ -35,22 +35,44 @@ public class ElectorMKIII {
             e.printStackTrace();
         }
 
-        //Bucle
-        while (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.YES_OPTION) {
+        int pasarLista = JOptionPane.showConfirmDialog(null, "¿Desea pasar lista?");
+        if(pasarLista == JOptionPane.YES_OPTION){
+            while (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.YES_OPTION) {
 
-            numero = (int) (Math.random() * listaAlumnos.size());
-            resultado = listaAlumnos.get(numero);
-            resultado = resultado.substring(1, resultado.length() - 1);
+                resultado = listaAlumnos.get(numero);
+                resultado = resultado.substring(1, resultado.length() - 1);
+                numero = numero + 1;
+                UIManager.put("OptionPane.yesButtonText", "Presente");
+                UIManager.put("OptionPane.noButtonText", "Falta");
+                respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
+                        + "\n¿Has hecho los deberes, " + resultado + "?");
 
-            respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
-                    + "\n¿Has hecho los deberes, " + resultado + "?");
+                //Condiciones del bucle
+                if (respuesta == JOptionPane.NO_OPTION) listaNegativos.add(resultado);
+                else if (respuesta == JOptionPane.YES_OPTION) listaPositivos.add(resultado);
 
-            //Condiciones del bucle
-            if (respuesta == JOptionPane.NO_OPTION) listaNegativos.add(resultado);
-            else if (respuesta == JOptionPane.YES_OPTION) listaPositivos.add(resultado);
+                listaAlumnos.remove(numero);
+                if (listaAlumnos.isEmpty()) break;
+            }
+        }
+        else {
+            //Bucle de tarea
+            while (respuesta == JOptionPane.NO_OPTION || respuesta == JOptionPane.YES_OPTION) {
 
-            listaAlumnos.remove(numero);
-            if (listaAlumnos.isEmpty()) break;
+                numero = (int) (Math.random() * listaAlumnos.size());
+                resultado = listaAlumnos.get(numero);
+                resultado = resultado.substring(1, resultado.length() - 1);
+
+                respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
+                        + "\n¿Has hecho los deberes, " + resultado + "?");
+
+                //Condiciones del bucle
+                if (respuesta == JOptionPane.NO_OPTION) listaNegativos.add(resultado);
+                else if (respuesta == JOptionPane.YES_OPTION) listaPositivos.add(resultado);
+
+                listaAlumnos.remove(numero);
+                if (listaAlumnos.isEmpty()) break;
+            }
         }
 
         //Condiciones resultado del bucle
