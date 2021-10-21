@@ -2,14 +2,13 @@ package sinGoogle;
 
 import javax.swing.*;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ElectorMKIII {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         //Arraylists
         ArrayList<String> listaAlumnos = new ArrayList<>();
