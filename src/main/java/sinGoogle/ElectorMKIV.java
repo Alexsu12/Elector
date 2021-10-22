@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class ElectorMKIII {
+public class ElectorMKIV {
     public static void main(String[] args) {
 
         //Arraylists
@@ -63,6 +63,7 @@ public class ElectorMKIII {
                 datosArray.append(elemento).append("\n");
             }
             JOptionPane.showMessageDialog(null, datosArray + "\nHan hecho los deberes");
+            JOptionPane.showMessageDialog(null, "Fin de programa");
         }
         else if (listaPositivos.isEmpty()) {
             StringBuilder datosArray = new StringBuilder();
@@ -70,6 +71,7 @@ public class ElectorMKIII {
                 datosArray.append(elemento).append("\n");
             }
             JOptionPane.showMessageDialog(null, datosArray + "\nNo han hecho los deberes");
+            JOptionPane.showMessageDialog(null, "Fin de programa");
         }
         else {
             StringBuilder datosArray1 = new StringBuilder();
