@@ -41,11 +41,12 @@ public class ElectorMKIII {
         //Paso de lista
         int pasarLista = JOptionPane.showConfirmDialog(null, "¿Desea pasar lista?");
         if(pasarLista == JOptionPane.YES_OPTION){
-            while (respuestaLista == JOptionPane.NO_OPTION || respuestaLista == JOptionPane.YES_OPTION) {
+            while (respuestaLista == JOptionPane.NO_OPTION || respuestaLista == JOptionPane.YES_OPTION || numero != listaAlumnos.size()) {
 
                 resultado = listaAlumnos.get(numero);
                 resultado = resultado.substring(1, resultado.length() - 1);
                 numero = numero + 1;
+
                 UIManager.put("OptionPane.yesButtonText", "Presente");
                 UIManager.put("OptionPane.noButtonText", "Falta");
                 respuestaLista = JOptionPane.showConfirmDialog(null, resultado);
@@ -57,8 +58,6 @@ public class ElectorMKIII {
                 else if (respuestaLista == JOptionPane.YES_OPTION) {
                     listaPresentes.add(resultado);
                 }
-                listaAlumnos.remove(numero);
-                if (listaAlumnos.isEmpty()) break;
             }
 
             if (listaFaltas.isEmpty()) {
