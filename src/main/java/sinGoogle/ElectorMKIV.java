@@ -43,7 +43,7 @@ public class ElectorMKIV {
             resultado = resultado.substring(1, resultado.length() - 1);
 
             respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
-                    + "\n¿Has hecho los deberes, " + resultado + "?");
+                    + "\n¿Has hecho los deberes, " + resultado + "?\n\nPulsa cancelar para finalizar");
 
             //Condiciones del bucle
             if (respuesta == JOptionPane.NO_OPTION) listaNegativos.add(resultado);
