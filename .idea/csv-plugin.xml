@@ -3,7 +3,7 @@
   <component name="CsvFileAttributes">
     <option name="attributeMap">
       <map>
-        <entry key="/src/main/java/sinGoogle/listado.csv">
+        <entry key="/src/main/java/elector/listado.csv">
           <value>
             <Attribute>
               <option name="separator" value="," />
