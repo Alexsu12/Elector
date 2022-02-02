@@ -38,13 +38,14 @@ public class ElectorMKV {
             Statement statement = connection.createStatement();
             ResultSet resultados = statement.executeQuery("SELECT * FROM Listado");
 
+            //Coge la cuenta de filas en la tabla
             ResultSet numCol = statement.executeQuery("SELECT COUNT(*) AS rowcount FROM Listado");
             numCol.next();
             int count = numCol.getInt("rowcount") ;
             numCol.close();
 
-            String[] arrayAlumnos = new String[count];
             //Se guarda cada fila de la tabla "Listado"
+            String[] arrayAlumnos = new String[count];
             while (resultados.next()) {
                 String nombre = resultados.getString("nombre");
                 String apellido1 = resultados.getString("apellido1");
