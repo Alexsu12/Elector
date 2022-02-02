@@ -1,18 +1,19 @@
 package elector;
 
 import java.sql.*;
+import java.util.Arrays;
 
 public class ElectorMKV {
     public static void main(String[] args) {
 
         Connection connection = null;
         try {
-            // Load the MySQL JDBC driver
+            //Carga del JDBC Driver
             String driverName = "com.mysql.cj.jdbc.Driver";
             Class.forName(driverName);
 
 
-            // Create a connection to the database
+            //Crea una conexión con la base de datos "Alumnos"
             String serverName = "192.168.42.128";
             String schema = "Alumnos";
             String url = "jdbc:mysql://" + serverName + "/" + schema;
@@ -22,41 +23,39 @@ public class ElectorMKV {
             connection = DriverManager.getConnection(url, username, password);
 
 
-            System.out.println("Successfully Connected to the database!\n");
+            System.out.println("!Se ha conectado a la base de datos¡\n");
 
 
         } catch (ClassNotFoundException e) {
-
-            System.out.println("Could not find the database driver " + e.getMessage());
+            System.out.println("No se ha encontrado el driver " + e.getMessage());
         } catch (SQLException e) {
-
-            System.out.println("Could not connect to the database " + e.getMessage());
+            System.out.println("No se ha podido conectar a la base de datos " + e.getMessage());
         }
 
         try {
-            // Get a result set containing all data from test_table
+            //Coge los datos de "Alumnos" y los mete en resultados
+            assert connection != null;
             Statement statement = connection.createStatement();
-            ResultSet results = statement.executeQuery("SELECT * FROM Listado");
+            ResultSet resultados = statement.executeQuery("SELECT * FROM Listado");
 
+            ResultSet numCol = statement.executeQuery("SELECT COUNT(*) AS rowcount FROM Listado");
+            numCol.next();
+            int count = numCol.getInt("rowcount") ;
+            numCol.close();
 
-            // For each row of the result set ...
-            while (results.next()) {
-                String data = results.getString("idAlumno");
-                System.out.println("Id" + ": " + data + " ");
-                // Get the data from the current row using the column index - column data are in the VARCHAR format
-                data = results.getString("nombre");
-                System.out.println("Nombre" + ": " + data + " ");
-                // Get the data from the current row using the column name - column data are in the VARCHAR format
-                data = results.getString("apellido1");
-                System.out.println("Apellido 1" + ": " + data + " ");
+            String[] arrayAlumnos = new String[count];
+            //Se guarda cada fila de la tabla "Listado"
+            while (resultados.next()) {
+                String nombre = resultados.getString("nombre");
+                String apellido1 = resultados.getString("apellido1");
+                String apellido2 = resultados.getString("apellido2");
 
-                data = results.getString("apellido2");
-                if (data.equals("")){
-                    System.out.println("\n");
-                }else System.out.println("Apellido 2" + ": " + data + "\n");
+                Arrays.fill(arrayAlumnos, nombre + " " + apellido1 + " " + apellido2);
             }
+
+
         } catch (SQLException e) {
-            System.out.println("Could not retrieve data from the database " + e.getMessage());
+            System.out.println("No se ha podido sacar los datos de la base de datos " + e.getMessage());
         }
     }
 }
