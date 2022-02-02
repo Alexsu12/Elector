@@ -15,7 +15,6 @@ public class ElectorMKV {
             String driverName = "com.mysql.cj.jdbc.Driver";
             Class.forName(driverName);
 
-
             //Crea una conexión con la base de datos "Alumnos"
             String serverName = "192.168.42.128";
             String schema = "Alumnos";
@@ -38,7 +37,7 @@ public class ElectorMKV {
             Statement statement1 = connection.createStatement();
             ResultSet numCol = statement1.executeQuery("SELECT COUNT(*) AS rowcount FROM Listado");
             numCol.next();
-            int count = numCol.getInt("rowcount") ;
+            int count = numCol.getInt("rowcount");
             numCol.close();
 
             //Coge los datos de "Alumnos" y los mete en resultados
@@ -47,10 +46,10 @@ public class ElectorMKV {
 
             //Se guarda cada fila de la tabla "Listado"
             String[] listaAlumnos = new String[count];
-            for (int i = 0; i<listaAlumnos.length; i++){
+            for (int i = 0; i < listaAlumnos.length; i++) {
                 resultados.next();
-                listaAlumnos[i] = resultados.getString("nombre") +" "+ resultados.getString("apellido1") +" "+
-                resultados.getString("apellido2");
+                listaAlumnos[i] = resultados.getString("nombre") + " " + resultados.getString("apellido1") +
+                        " " + resultados.getString("apellido2");
             }
 
             //Arraylists
@@ -68,8 +67,8 @@ public class ElectorMKV {
                 numero = (int) (Math.random() * listaAlumnos.length);
                 resultado = listaAlumnos[numero];
 
-                respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado
-                        + "\n¿Has hecho los deberes, " + resultado + "?\n\nPulsa cancelar para finalizar");
+                respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado +
+                        "\n¿Has hecho los deberes, " + resultado + "?\n\nPulsa cancelar para finalizar");
 
                 //Condiciones del bucle
                 if (respuesta == JOptionPane.NO_OPTION) listaNegativos.add(resultado);
@@ -82,24 +81,21 @@ public class ElectorMKV {
             //Condiciones resultado del bucle
             if (listaNegativos.isEmpty() && listaPositivos.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Fin de programa");
-            }
-            else if (listaNegativos.isEmpty()) {
+            } else if (listaNegativos.isEmpty()) {
                 StringBuilder datosArray = new StringBuilder();
                 for (String elemento : listaPositivos) {
                     datosArray.append(elemento).append("\n");
                 }
                 JOptionPane.showMessageDialog(null, datosArray + "\nHan hecho los deberes");
                 JOptionPane.showMessageDialog(null, "Fin de programa");
-            }
-            else if (listaPositivos.isEmpty()) {
+            } else if (listaPositivos.isEmpty()) {
                 StringBuilder datosArray = new StringBuilder();
                 for (String elemento : listaNegativos) {
                     datosArray.append(elemento).append("\n");
                 }
                 JOptionPane.showMessageDialog(null, datosArray + "\nNo han hecho los deberes");
                 JOptionPane.showMessageDialog(null, "Fin de programa");
-            }
-            else {
+            } else {
                 StringBuilder datosArray1 = new StringBuilder();
                 for (String elemento : listaPositivos) {
                     datosArray1.append(elemento).append("\n");
