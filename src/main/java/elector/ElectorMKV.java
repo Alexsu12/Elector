@@ -46,9 +46,11 @@ public class ElectorMKV {
 
             //Se guarda cada fila de la tabla "Listado"
             String[] listaAlumnos = new String[count];
+            String[] nombres = new String[count];
             for (int i = 0; i < listaAlumnos.length; i++) {
                 resultados.next();
-                listaAlumnos[i] = resultados.getString("nombre");
+                listaAlumnos[i] = resultados.getString("nombre") + " " + resultados.getString("apellido1");
+                nombres[i] = resultados.getString("nombre");
             }
 
             //Arraylists
@@ -57,6 +59,7 @@ public class ElectorMKV {
 
             //Variables
             String resultado;
+            String nombre;
             int respuesta = 1;
             int numero;
 
@@ -65,6 +68,7 @@ public class ElectorMKV {
 
                 numero = (int) (Math.random() * listaAlumnos.length);
                 resultado = listaAlumnos[numero];
+                nombre = nombres[numero];
 
                 respuesta = JOptionPane.showConfirmDialog(null, "Le ha tocado a " + resultado +
                         "\n¿Has hecho los deberes, " + resultado + "?\n\nPulsa cancelar para finalizar");
@@ -73,12 +77,12 @@ public class ElectorMKV {
                 if (respuesta == JOptionPane.NO_OPTION){
                     listaNegativos.add(resultado);
                     Statement addNegativo = connection.createStatement();
-                    addNegativo.executeUpdate("UPDATE Listado SET notas = notas - 1 WHERE nombre = '" + resultado + "'");
+                    addNegativo.executeUpdate("UPDATE Listado SET notas = notas - 1 WHERE nombre = '" + nombre + "'");
                 }
                 else if (respuesta == JOptionPane.YES_OPTION){
                     listaPositivos.add(resultado);
                     Statement addPositivo = connection.createStatement();
-                    addPositivo.executeUpdate("UPDATE Listado SET notas = notas + 1 WHERE nombre= '" + resultado + "'");
+                    addPositivo.executeUpdate("UPDATE Listado SET notas = notas + 1 WHERE nombre= '" + nombre + "'");
                 }
 
                 listaAlumnos = ArrayUtils.remove(listaAlumnos, numero);
