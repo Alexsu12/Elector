@@ -48,8 +48,7 @@ public class ElectorMKV {
             String[] listaAlumnos = new String[count];
             for (int i = 0; i < listaAlumnos.length; i++) {
                 resultados.next();
-                listaAlumnos[i] = resultados.getString("nombre") + " " + resultados.getString("apellido1") +
-                        " " + resultados.getString("apellido2");
+                listaAlumnos[i] = resultados.getString("nombre");
             }
 
             //Arraylists
@@ -71,8 +70,16 @@ public class ElectorMKV {
                         "\n¿Has hecho los deberes, " + resultado + "?\n\nPulsa cancelar para finalizar");
 
                 //Condiciones del bucle
-                if (respuesta == JOptionPane.NO_OPTION) listaNegativos.add(resultado);
-                else if (respuesta == JOptionPane.YES_OPTION) listaPositivos.add(resultado);
+                if (respuesta == JOptionPane.NO_OPTION){
+                    listaNegativos.add(resultado);
+                    Statement addNegativo = connection.createStatement();
+                    addNegativo.executeUpdate("UPDATE Listado SET notas = notas - 1 WHERE nombre = '" + resultado + "'");
+                }
+                else if (respuesta == JOptionPane.YES_OPTION){
+                    listaPositivos.add(resultado);
+                    Statement addPositivo = connection.createStatement();
+                    addPositivo.executeUpdate("UPDATE Listado SET notas = notas + 1 WHERE nombre= '" + resultado + "'");
+                }
 
                 listaAlumnos = ArrayUtils.remove(listaAlumnos, numero);
                 if (ArrayUtils.isEmpty(listaAlumnos)) break;
